@@ -3,4 +3,8 @@ public class App {
         Login l = new Login();
         l.loginScreen();
     }
+
+    public static Student findStudent(String _ID){
+        return null; //Student のリストからIDで探します。
+    }
 }
