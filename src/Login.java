@@ -9,15 +9,21 @@ public class Login {
         String userPass = sc.nextLine();
         sc.close();//リソースの解放のためにあります。
 
-        if(checkUser(userID,userPass)){
-
-        }
+        if(checkUser(userID,userPass))studentScreen(userID);
     }
 
     private boolean checkUser(String _ID, String _pass){
 
-        if(!_ID.equals("Testword")) return false;
-        if(!_pass.equals("Testword")) return false;
+        if(!_ID.equals("")) return false;
+        if(!_pass.equals("")) return false;
         return  true;
+    }
+
+    private void studentScreen(String _ID){
+        System.out.println("Youre in");
+
+        final Student USER = App.findStudent(_ID);
+        System.out.println(USER.getName());
+
     }
 }
