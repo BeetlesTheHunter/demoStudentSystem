@@ -1,0 +1,80 @@
+public class Student {
+    private String studentId;
+    private String name;
+    private String pw;
+    private boolean toeic;
+    private String teacherId;
+    private int point;
+    private String pointDelDate;
+    //courseフィールド入ってない
+
+    public Student() {
+    }
+
+    public Student(String studentId, String name, String pw, boolean toeic, String teacherId, int point, String pointDelDate){
+        this.studentId = studentId;
+        this.name = name;
+        this.pw = pw;
+        this.toeic = toeic;
+        this.teacherId = teacherId;
+        this.point = point;
+        this.pointDelDate = pointDelDate;        
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public boolean isToeic() {
+        return toeic;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public String getPointDelDate() {
+        return pointDelDate;
+    }
+
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
+    public void setToeic(boolean toeic) {
+        this.toeic = toeic;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public void setPointDelDate(String pointDelDate) {
+        this.pointDelDate = pointDelDate;
+    }
+}
