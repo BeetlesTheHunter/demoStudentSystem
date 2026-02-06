@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,24 +14,25 @@ public class App {
         loadReservation();//ロード追加
         loadStudent();//ロード追加
         loadTeacher();//ロード追加
+
         Login l = new Login();
         l.loginScreen();
     }
 
-    public static void makeStudentMap(){//ロード関数にこれを追加してください。
-        for (int i = 0; i < studentList.size(); i++){
-            studentMap.put(studentList.get(i).getStudentId(), studentList.get(i));
-        }
-    }
     public static Student findStudent(String _ID){
         return studentMap.get(_ID); //Student のリストからIDで探します。
     }
 
+    private static void makeStudentMap(){
+        for (int i = 0; i < studentList.size(); i++){
+            studentMap.put(studentList.get(i).getStudentId(), studentList.get(i));
+        }
+    }
+    
     //ロード関数３つ作成
-    public static void loadStudent() {
+    private static void loadStudent() {
         String fileName = "student.csv"; //仮テスト用ファイル作った
-        try {File file = new File(fileName);
-            BufferedReader br = new BufferedReader(new FileReader(file));
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -47,16 +48,15 @@ public class App {
                 s.setPointDelDate(data[6].trim());
                 studentList.add(s);
             }          
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch (IOException e) {
+            System.err.println(e.getMessage());
         }
         makeStudentMap(); //makeStudentMapを追加しました 
-        }    
+    }    
     
-    public static void loadTeacher(){
+    private static void loadTeacher(){
         String fileName = "teacher.csv"; //仮ファイル名前、未作成
-        try {File file = new File(fileName);
-            BufferedReader br = new BufferedReader(new FileReader(file));
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -65,15 +65,14 @@ public class App {
                 t.setName(data[1].trim());
                 teacherList.add(t);
             }           
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 
-    public static void loadReservation(){
+    private static void loadReservation(){
         String fileName = "reservation.csv"; //仮ファイル名前、未作成
-        try {File file = new File(fileName);
-            BufferedReader br = new BufferedReader(new FileReader(file));
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -83,11 +82,11 @@ public class App {
                 r.setDate(data[2].trim());
                 r.setTime(data[3].trim());
             }           
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch(IOException e) {
+            System.err.println(e.getMessage());
         }
     }   
-    }
+}
 
 
     
