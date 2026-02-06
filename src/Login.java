@@ -17,7 +17,7 @@ public class Login {
     private boolean checkUser(String _ID, String _pass){
 
         if(!_ID.equals("Testword")) return false;
-        if(!_ID.equals("Testword")) return false;
+        if(!_pass.equals("Testword")) return false;
         return  true;
     }
 }
