@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 
 public class App {
-    private static ArrayList<Student> studentList = new ArrayList<Student>();
+    public static ArrayList<Student> studentList = new ArrayList<Student>();
     private static HashMap<String,Student> studentMap = new HashMap<String,Student>();
     private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
