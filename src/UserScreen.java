@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class UserScreen {
@@ -70,4 +71,63 @@ public class UserScreen {
         s = App.findStudent(sc.nextLine());
         if(s == null)System.out.println("Not a Student!!");
     }
+
+        private void addStudentScreen(){
+        System.out.println("--------入会システム--------");
+        while (true) { 
+            System.out.println("[1]: 生徒入会");
+            System.out.println("[2]: システム終了");
+            Scanner sc = new Scanner(System.in);
+            String choose = sc.next();
+            switch (choose) {
+                case "1" :
+                    System.out.println("入会手続きを開始します");
+                    addStudent();
+                    continue;
+                case "2" :
+                     System.out.println("システム終了します"); System.exit(0);
+                default :
+                 System.out.println("もう一度入力してください");
+                 continue;
+            }
+        }
+
+    }
+
+    private void addStudent(){
+        String StudentId = createStudentId();//未作成
+        Scanner sc = new Scanner(System.in);
+        System.out.println("生徒名を入力してください");
+        String studentName = sc.next();
+        System.out.println("Toeicを選択しますか? y/n");
+        String toeic = sc.next();
+        boolean isToeic = toeic.equalsIgnoreCase("y");
+        System.out.println("担当したい教師IDを入力 例:t001");
+        String teacherId = sc.next();
+        while (true) { //ポイント購入チェック
+            System.out.println("購入するポイントを入力 (購入条件は最低限200ポイントおよび200ポイントごとしか買えない)");
+            int point = sc.nextInt();
+            if(!checkBuyPoint(point)){
+                continue;
+            }else break;
+}
+        LocalDateTime now = LocalDateTime.now();
+        String pointDelDate = String.format("%04d-%02d-%02d",
+        now.getYear(),
+        now.getMonthValue(),
+        now.getDayOfMonth());
+
+}
+
+    private String createStudentId() {
+        return "";
+    }
+
+    private boolean checkBuyPoint(int point) {
+        if(point<200){return false;}
+        if(point%200!=0){return false;}
+        return true;
+    }
+
+
 }
