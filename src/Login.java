@@ -8,6 +8,14 @@ public class Login {
 
 
         // ループすとこわれる
+        //色々試したがwhile文でもこわれます。
+        /*
+            Exception in thread "main" java.util.NoSuchElementException: No line found
+            at java.base/java.util.Scanner.nextLine(Scanner.java:1690)
+            at Login.loginScreen(Login.java:13)
+            at Login.loginScreen(Login.java:26)
+            at App.main(App.java:19)    
+        */
         try(Scanner sc = new Scanner(System.in)){
             System.out.println("IDを入力してください。");
             userID = sc.nextLine();
@@ -23,7 +31,7 @@ public class Login {
             System.out.println("IDかパスワードが間違ってます。");
         }
 
-        loginScreen();
+        //loginScreen();
     }
 
     private boolean checkUser(String _ID, String _pass){
