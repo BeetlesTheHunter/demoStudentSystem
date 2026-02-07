@@ -78,7 +78,6 @@ public class UserScreen {
         while (true) { 
             System.out.println("[1]: 生徒入会");
             System.out.println("[2]: システム終了");
-            Scanner sc = new Scanner(System.in);
             String choose = sc.next();
             switch (choose) {
                 case "1" :
@@ -97,7 +96,6 @@ public class UserScreen {
 
     private void addStudent(){
         String StudentId = createStudentId();//未作成
-        Scanner sc = new Scanner(System.in);
         System.out.println("生徒名を入力してください");
         String studentName = sc.next();
         System.out.println("Toeicを選択しますか? y/n");
