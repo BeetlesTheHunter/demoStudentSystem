@@ -1,4 +1,4 @@
-public class Student {
+public class Student implements ClassCourse{
     private String studentId;
     private String name;
     private String pw;
@@ -6,22 +6,24 @@ public class Student {
     private String teacherId;
     private int point;
     private String pointDelDate;
-    //courseフィールド入ってない
+    private Course course;
 
     public Student() {
     }
 
-    public Student(String studentId, String name, String pw, boolean toeic, String teacherId, int point, String pointDelDate){
+    public Student(String studentId, String name, String pw, boolean toeic, String teacherId, int point, String pointDelDate, String course){
         this.studentId = studentId;
         this.name = name;
         this.pw = pw;
         this.toeic = toeic;
         this.teacherId = teacherId;
         this.point = point;
-        this.pointDelDate = pointDelDate;        
+        this.pointDelDate = pointDelDate;
+        setCourse(course);      
     }
 
     //methods
+    
     public String pointsprint(){
         if(point < App.globalPointMin){
             return "ポイントが足りませ購入してください。";
@@ -86,5 +88,21 @@ public class Student {
 
     public void setPointDelDate(String pointDelDate) {
         this.pointDelDate = pointDelDate;
+    }
+
+    public void setCourse(String _course){
+        switch (_course) {
+           case "low" -> course = Course.LOW;
+           case "upper" -> course = Course.UPPER;
+           case "high" -> course = Course.HIGH;
+        }
+    }
+
+    public String getCourse(){
+        return course.getCourseString();
+    }
+
+    public Course getClassCourse(){
+        return this.course;
     }
 }
