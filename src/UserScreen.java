@@ -12,6 +12,7 @@ public class UserScreen {
         while(true){
             System.out.println("=======生徒画面=====================================");
             System.out.println(USER.getName());
+            System.out.println(USER.getCourse());
             System.out.println(USER.pointsprint());
             System.out.println("");
             

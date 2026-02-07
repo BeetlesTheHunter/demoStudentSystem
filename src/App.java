@@ -3,6 +3,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+/*
+    メモ：
+    コースはインタフェースです。
+
+*/
+
 
 public class App {
     private static ArrayList<Student> studentList = new ArrayList<Student>();
@@ -50,6 +56,7 @@ public class App {
                 s.setTeacherId(data[4].trim());
                 s.setPoint(Integer.parseInt(data[5].trim()));
                 s.setPointDelDate(data[6].trim());
+                s.setCourse(data[7].trim());
                 studentList.add(s);
             }          
         }catch (IOException e) {
