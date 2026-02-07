@@ -58,7 +58,7 @@ public class UserScreen {
 
             switch (choice){
                 case "1" -> setTarget();
-                case "2" -> System.out.println();
+                case "2" -> addStudentScreen();
                 case "3" -> System.out.println();
                 case "4" -> System.out.println();
                 case "5" -> System.out.println();
@@ -85,7 +85,7 @@ public class UserScreen {
                     addStudent();
                     continue;
                 case "2" :
-                     System.out.println("システム終了します"); System.exit(0);
+                     System.out.println("システム終了します"); //System.exit(0);抜けられなくね
                 default :
                  System.out.println("もう一度入力してください");
                  continue;
@@ -95,7 +95,7 @@ public class UserScreen {
     }
 
     private void addStudent(){
-        String StudentId = createStudentId();//未作成
+        String StudentId = createStudentId();
         System.out.println("生徒名を入力してください");
         String studentName = sc.next();
         System.out.println("Toeicを選択しますか? y/n");
@@ -109,7 +109,7 @@ public class UserScreen {
             if(!checkBuyPoint(point)){
                 continue;
             }else break;
-}
+        }
         LocalDateTime now = LocalDateTime.now();
         String pointDelDate = String.format("%04d-%02d-%02d",
         now.getYear(),
@@ -119,7 +119,12 @@ public class UserScreen {
 }
 
     private String createStudentId() {
-        return "";
+        String ID = "";
+        LocalDateTime now = LocalDateTime.now();
+        ID = ("s"+now.getYear()+ (0000 + App.studentList.size()));
+
+
+        return ID;
     }
 
     private boolean checkBuyPoint(int point) {
