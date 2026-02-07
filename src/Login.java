@@ -16,7 +16,9 @@ public class Login {
             at Login.loginScreen(Login.java:26)
             at App.main(App.java:19)    
         */
-        try(Scanner sc = new Scanner(System.in)){
+       Scanner sc = new Scanner(System.in);
+
+        try{
             System.out.println("IDを入力してください。");
             userID = sc.nextLine();
             System.out.println("パスワードを入力してください。");
