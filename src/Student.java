@@ -23,7 +23,7 @@ public class Student {
 
     //methods
     public String pointsprint(){
-        if(point <= App.globalPointMin){
+        if(point < App.globalPointMin){
             return "ポイントが足りませ購入してください。";
         }else{
             return (this.point+"");
