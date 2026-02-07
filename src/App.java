@@ -10,6 +10,8 @@ public class App {
     private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
 
+    public static int globalPointMin = 4;
+
 
     public static void main(String[] args) throws Exception {
         loadReservation();//ロード追加
