@@ -31,7 +31,7 @@ public class Login {
             System.out.println("IDかパスワードが間違ってます。");
         }
 
-        //loginScreen();
+        loginScreen();
     }
 
     private boolean checkUser(String _ID, String _pass){
