@@ -1,25 +1,36 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Login {
     
     public void loginScreen(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("IDを入力してください。");
-        String userID = sc.nextLine();
-        System.out.println("パスワードを入力してください。");
-        String userPass = sc.nextLine();
-        sc.close();//リソースの解放のためにあります。
+        String userID = null;
+        String userPass = null;
 
-     
-        if(checkUser(userID,userPass))studentScreen(userID);
-        
 
-        System.out.println("IDかパスワードが間違ってます。");
+        // ループすとこわれる
+        try(Scanner sc = new Scanner(System.in)){
+            System.out.println("IDを入力してください。");
+            userID = sc.nextLine();
+            System.out.println("パスワードを入力してください。");
+            userPass = sc.nextLine();
+        }catch(InputMismatchException e){
+            System.err.println(e.getMessage());
+        }
+
+        if(checkUser(userID,userPass)){
+            studentScreen(userID);
+        }else{
+            System.out.println("IDかパスワードが間違ってます。");
+        }
+
         loginScreen();
     }
 
     private boolean checkUser(String _ID, String _pass){
-        if(!_ID.equals(App.findStudent(_ID).getStudentId())) return false;
-        if(!_pass.equals(App.findStudent(_ID).getPw())) return false;
+        Student user = App.findStudent(_ID);
+        if(user == null)return false;
+        if(!user.getStudentId().equals(_ID))return false;
+        if(!user.getPw().equals(_pass))return false;
         
         return true;
     }
