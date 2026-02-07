@@ -8,9 +8,7 @@ import java.util.StringJoiner;
 
 public class UserScreen {
 
-
     private static Scanner sc = new Scanner(System.in);
-
 
     public void studentScreen(String _ID){
         final Student USER = App.findStudent(_ID);
@@ -47,7 +45,6 @@ public class UserScreen {
        
     }
 
-
     private static Student s;
     public void adminScreen(){
 
@@ -81,15 +78,13 @@ public class UserScreen {
         }
     }
 
-
     private void setTarget(){
         System.out.println("生徒IDを入力してください。");
         s = App.findStudent(sc.nextLine());
         if(s == null)System.out.println("Not a Student!!");
     }
 
-
-        private void addStudentScreen(){
+    private void addStudentScreen(){
         System.out.println("--------入会システム--------");
         while (true) {
             System.out.println("[1]: 生徒入会");
@@ -119,7 +114,6 @@ public class UserScreen {
 
 
     }
-
 
     private void addStudent(){
         String StudentId = createStudentId();
@@ -197,7 +191,6 @@ public class UserScreen {
 
 }
 
-
     private String createStudentId() {
         String ID = "";
         LocalDateTime now = LocalDateTime.now();
@@ -209,13 +202,11 @@ public class UserScreen {
         return ID;
     }
 
-
     private boolean checkBuyPoint(int point) {
         if(point<200){return false;}
         if(point%200!=0){return false;}
         return true;
     }
-
 
     private String createStudentPw() {
         String pw = "";
@@ -238,7 +229,7 @@ public class UserScreen {
     private void viewStudent(){//テスト用
         System.out.println(App.studentList.size());
         for (int i = 0; i < App.studentList.size(); i++) {
-            System.out.println(App.studentList.get(i).getName());
+            System.out.println(App.studentList.get(i).toString());
         }
     }
 
