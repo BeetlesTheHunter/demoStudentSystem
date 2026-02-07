@@ -1,5 +1,9 @@
-s001,ten,123456,false,t001,0,2026-10-11,high
-s002,jonte,1,true,t001,4,2026-10-11,low
-s20262,朝日,hwUfuH,false,t001,400,2027-02-07,upper
-s20263,今津,jIKAdD,true,t001,400,2027-02-07,low
-s20264,山田,fbmOxb,false,t001,600,2027-02-07,high
+s001,ten,123456,false,t001,0,2026-10-11,high,
+s002,jonte,1,true,t001,4,2026-10-11,low,
+s20262,朝日,hwUfuH,false,t001,400,2027-02-07,upper,
+s20263,今津,jIKAdD,true,t001,400,2027-02-07,low,
+s20264,山田,fbmOxb,false,t001,600,2027-02-07,high,
+s20265,rudra,GoLDBS,true,t001,200,2027-02-08,upper,
+s20266,tomato,yqdiUd,true,t001,200,2027-02-08,upper,
+s20267,sea,xGcmuK,true,t001,600,2027-02-08,low,
+s20268,yamaguchi,YNEMZG,false,t001,200,2027-02-08,low,

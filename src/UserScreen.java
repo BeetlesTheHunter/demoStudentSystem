@@ -26,8 +26,8 @@ public class UserScreen {
             System.out.println("1.");
             System.out.println("2.");
             System.out.println("3.");
-            System.out.println("4.");
-            System.out.println("5.");
+            System.out.println("4.パスワード変更");
+            System.out.println("5.ログアウト");
 
 
             String choice = sc.nextLine();
@@ -37,8 +37,8 @@ public class UserScreen {
                 case "1" -> System.out.println();
                 case "2" -> System.out.println();
                 case "3" -> System.out.println();
-                case "4" -> System.out.println();
-                case "5" -> System.out.println();
+                case "4" -> changePw(USER.getStudentId());
+                case "5" -> new Login().loginScreen();
                 default -> System.out.println("Not an option try again");
             }
         }
@@ -157,7 +157,6 @@ public class UserScreen {
         String pw = createStudentPw(); //パスワードランダム生成
        
         try(FileWriter fw = new FileWriter("student.csv", true)){
-            fw.write("\n");
             StringJoiner sj = new StringJoiner(",");
             String student = sj.add(StudentId)
             .add(studentName)
@@ -168,7 +167,8 @@ public class UserScreen {
             .add(pointDelDate)
             .add(String.valueOf(course))
             .toString();
-            fw.write(student);  
+            fw.write(student); 
+            fw.write("\n"); 
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -184,6 +184,7 @@ public class UserScreen {
         s.setPointDelDate(pointDelDate);
         s.setCourse(course);
         App.studentList.add(s);
+        App.loadStudent();
         System.out.println("学生:" + StudentId + ", " + studentName + "さんが入会完了です、初期パスワードは:" + pw + ", パスワードは大事に保管してください");
 
 
@@ -233,6 +234,57 @@ public class UserScreen {
         }
     }
 
+    private void changePw(String Id){
+    String pw;
+    while (true) { 
+            System.out.println("変えたいパスワードを入力してください");
+            System.out.println("パスワードは6文字以上12文字以下、英数字のみ使用可能");
+            pw = sc.next();
+            if(!checkPw(pw)){
+                System.out.println("パスワードが条件に合わないです、もう一度入力してください");
+                continue;
+            }else {
+                System.out.println("入力したパスワードをもう一度確認してください");
+                String againPw = sc.next();
+                if(!againPw.equals(pw))continue;
+                else{
+                    System.out.println("パスワード変更成功");
+                    break;
+                }
+            }
+        }
+    for (int i = 0; i < App.studentList.size(); i++) {
+        if(Id.equals(App.studentList.get(i).getStudentId())){
+            App.studentList.get(i).setPw(pw);
+        }       
+    }
+    try(FileWriter fw = new FileWriter("student.csv")) {
+        for(Student s : App.studentList){
+            fw.write(s.getStudentId() + "," +
+                     s.getName() + "," +
+                     s.getPw() + "," +
+                     s.isToeic() + "," +
+                     s.getTeacherId() + "," +
+                     s.getPoint() + "," +
+                     s.getPointDelDate() + "," +
+                     s.getCourse() + "," + "\n");                   
+        }fw.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
 
+    private boolean checkPw(String pw) {
+        if(pw.length()<6 || pw.length()>12){return false;}
+        for (int i = 0; i < pw.length(); i++) {
+            char c = pw.charAt(i);
+            if(!((c>='a' && c <= 'z') || (c>='A' && c <= 'Z') || (c>='0' && c<='9'))){return false;}
+        }
+
+
+        return true;
+    }
+    
+    
 }
 
