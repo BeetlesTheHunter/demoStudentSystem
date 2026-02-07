@@ -10,6 +10,7 @@ public class App {
     private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
 
+
     public static void main(String[] args) throws Exception {
         loadReservation();//ロード追加
         loadStudent();//ロード追加
@@ -17,6 +18,7 @@ public class App {
 
         Login l = new Login();
         l.loginScreen();
+
     }
 
     public static Student findStudent(String _ID){
