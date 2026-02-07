@@ -21,6 +21,16 @@ public class Student {
         this.pointDelDate = pointDelDate;        
     }
 
+    //methods
+    public String pointsprint(){
+        if(point < App.globalPointMin){
+            return "ポイントが足りませ購入してください。";
+        }else{
+            return (this.point+"");
+        }
+    }
+
+    //getter setters 
     public String getStudentId() {
         return studentId;
     }
