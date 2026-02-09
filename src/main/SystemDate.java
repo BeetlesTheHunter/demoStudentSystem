@@ -1,6 +1,7 @@
 package main;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.Scanner;
 
 public class SystemDate {
@@ -18,15 +19,39 @@ public class SystemDate {
             System.out.println("例:2025年1月1日は 20250101で入力します。");
             date = sc.nextLine();
 
+            
+
+            int year = Integer.parseInt(Character.toString(date.charAt(0)) + Character.toString(date.charAt(1)) + Character.toString(date.charAt(2))  + Character.toString(date.charAt(3)));
+            int month = Integer.parseInt(Character.toString(date.charAt(4)) + Character.toString(date.charAt(5)));
+            int day = Integer.parseInt(Character.toString(date.charAt(6)) + Character.toString(date.charAt(7)));
+
             if(date.length() != 8){
                 System.out.println("yyyymmddで入力してください。");
                 continue;
             }
+            if(month >= 13){
+                System.out.println("1-12までの月を入力してください。");
+                continue;
+            }
+            if(day >= 32){
+                System.out.println("1-31までの日を入力してください。");
+                continue;
+            }
+            if(month == 2){
+                if(Year.isLeap(year) && day >= 29){
+                    System.out.println("2月は28日までです。");
+                    continue;
+                }else if (day >= 28){
+                    System.out.println("2月は27日までです。");
+                    continue;
+                }
+            }
+
             System.out.println(date);
-            System.out.println(date.charAt(0) + date.charAt(1) + date.charAt(2) + date.charAt(3) + "年");
-            System.out.println(date.charAt(4) + date.charAt(5) + "月");
-            System.out.println(date.charAt(6) + date.charAt(7) + "日");
-            System.out.println(getWeekDay(date));
+            System.out.println(year+ "年");
+            System.out.println(month + "月");
+            System.out.println(day + "日");
+            System.out.println(getWeekDay(year,month,day));
             System.out.println("よろしいいですか？");
 
             System.out.println(" ");
@@ -36,15 +61,12 @@ public class SystemDate {
             
             while (true){
                 String choice = sc.nextLine();
-                if(choice != "1") continue;
+                if(!choice.equals("1")) continue;
                 break;
             }
-
             break;
         }
 
-        
-        
         return date;
     }
 
@@ -64,10 +86,7 @@ public class SystemDate {
         return day.toString();
     }
 
-    private static String getWeekDay(String date){
-        int year = (date.charAt(0) + date.charAt(1) + date.charAt(2) + date.charAt(3));
-        int month = (date.charAt(4) + date.charAt(5));
-        int day = (date.charAt(6) + date.charAt(7));
+    private static String getWeekDay(int year,int month,int day){
         var d = LocalDate.of(year,month,day);
         return d.getDayOfWeek().toString();
     }
