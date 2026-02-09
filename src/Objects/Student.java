@@ -32,7 +32,7 @@ public class Student implements ClassCourse{
     
     public String pointsprint(){
         if(point < App.globalPointMin){
-            return "ポイントが足りませ購入してください。";
+            return "ポイントが足りません購入してください。";
         }else{
             return (this.point+"");
         }
