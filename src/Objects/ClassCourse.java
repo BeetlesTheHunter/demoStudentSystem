@@ -1,4 +1,4 @@
-package EnumCourse;
+package Objects;
 
 public interface ClassCourse {
 
