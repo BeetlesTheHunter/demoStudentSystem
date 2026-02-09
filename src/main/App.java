@@ -1,14 +1,14 @@
+package main;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-/*
-    メモ：
-    コースはインタフェースです。
 
-*/
-
+import Features.Login;
+import Objects.Reservation;
+import Objects.Student;
+import Objects.Teacher;
 
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
@@ -56,7 +56,6 @@ public class App {
                 s.setTeacherId(data[4].trim());
                 s.setPoint(Integer.parseInt(data[5].trim()));
                 s.setPointDelDate(data[6].trim());
-                s.setCourse(data[7].trim());
                 studentList.add(s);
             }          
         }catch (IOException e) {

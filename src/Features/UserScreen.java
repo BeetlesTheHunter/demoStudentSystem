@@ -1,3 +1,5 @@
+ package Features;
+ 
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -5,6 +7,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
+
+import Objects.Student;
+import main.App;
 
 public class UserScreen {
 
