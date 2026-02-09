@@ -1,6 +1,7 @@
 package main;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import Features.Login;
 import Objects.Reservation;
 import Objects.Student;
 import Objects.Teacher;
+import Objects.ClassCourse;
 
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
@@ -19,7 +21,6 @@ public class App {
 
     public static String globalDate = SystemDate.getFullDate();//これで現在を参照してね。
     public static int globalPointMin = 4;
-
 
     public static void main(String[] args) throws Exception {
         loadReservation();//ロード追加
@@ -43,8 +44,10 @@ public class App {
     
     //ロード関数３つ作成
     public static void loadStudent() {
+
         String fileName = "student.csv"; //仮テスト用ファイル作った
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
+            studentList.clear();
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -58,6 +61,7 @@ public class App {
                 s.setTeacherId(data[4].trim());
                 s.setPoint(Integer.parseInt(data[5].trim()));
                 s.setPointDelDate(data[6].trim());
+                s.setCourse(data[7].trim());
                 studentList.add(s);
             }          
         }catch (IOException e) {
@@ -69,6 +73,7 @@ public class App {
     public static void loadTeacher(){
         String fileName = "teacher.csv"; //仮ファイル名前、未作成
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
+            teacherList.clear();
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -85,6 +90,7 @@ public class App {
     public static void loadReservation(){
         String fileName = "reservation.csv"; //仮ファイル名前、未作成
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
+            reservationList.clear();
             String line;
             while((line = br.readLine())!=null){
                 String[] data = line.split(","); //ファイルがコンマで区切り想定
@@ -98,6 +104,51 @@ public class App {
             System.err.println(e.getMessage());
         }
     }   
+
+    //セーブ関数３つ作成
+    public static void saveStudent(){
+        try(FileWriter fw = new FileWriter("student.csv")) {
+        for(Student s : studentList){
+            fw.write(s.getStudentId() + "," +
+                     s.getName() + "," +
+                     s.getPw() + "," +
+                     s.isToeic() + "," +
+                     s.getTeacherId() + "," +
+                     s.getPoint() + "," +
+                     s.getPointDelDate() + "," +
+                     s.getCourse() + "\n");                   
+        }fw.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    loadStudent();
+    }
+
+    public static void saveReservation(){
+        try(FileWriter fw = new FileWriter("reservation.csv")) {
+        for(Reservation r : reservationList){
+            fw.write(r.getStudentId() + "," +
+                     r.getTeacherId() + "," +
+                     r.getDate() + "," +
+                     r.getTime() + "," + "\n");                   
+        }fw.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    loadReservation();
+    }
+    
+    public static void saveTeacher(){
+        try(FileWriter fw = new FileWriter("student.csv")) {
+        for(Teacher t : teacherList){
+            fw.write(t.getTeacherId() + "," +
+                     t.getName() + "," + "\n");                   
+        }fw.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    loadTeacher();
+    }
 }
 
 

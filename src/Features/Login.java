@@ -1,8 +1,7 @@
 package Features;
+import Objects.Student;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import Objects.Student;
 import main.App;
 
 public class Login {
