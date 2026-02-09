@@ -1,3 +1,5 @@
+package EnumCourse;
+
 public interface ClassCourse {
 
     public enum Course {

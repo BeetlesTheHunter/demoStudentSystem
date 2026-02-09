@@ -1,3 +1,9 @@
+package Objects;
+
+import main.App;
+
+
+
 public class Student implements ClassCourse{
     private String studentId;
     private String name;
