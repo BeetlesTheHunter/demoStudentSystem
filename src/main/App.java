@@ -40,7 +40,7 @@ public class App {
     }
     
     //ロード関数３つ作成
-    private static void loadStudent() {
+    public static void loadStudent() {
         String fileName = "student.csv"; //仮テスト用ファイル作った
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;
@@ -64,7 +64,7 @@ public class App {
         makeStudentMap(); //makeStudentMapを追加しました 
     }    
     
-    private static void loadTeacher(){
+    public static void loadTeacher(){
         String fileName = "teacher.csv"; //仮ファイル名前、未作成
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;
@@ -80,7 +80,7 @@ public class App {
         }
     }
 
-    private static void loadReservation(){
+    public static void loadReservation(){
         String fileName = "reservation.csv"; //仮ファイル名前、未作成
         try(BufferedReader br = new BufferedReader(new FileReader(fileName));) {
             String line;

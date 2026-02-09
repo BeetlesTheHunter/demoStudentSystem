@@ -111,4 +111,20 @@ public class Student implements ClassCourse{
     public Course getClassCourse(){
         return this.course;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Student{");
+        sb.append("学生ID=").append(studentId);
+        sb.append(", 学生名前=").append(name);
+        sb.append(", パスワード=").append(pw);
+        sb.append(", toeic=").append(toeic);
+        sb.append(", 教師=").append(teacherId);
+        sb.append(", ポイント残り=").append(point);
+        sb.append(", ポイント期限=").append(pointDelDate);
+        sb.append(", コース=").append(course);
+        sb.append('}');
+        return sb.toString();
+    }
 }
