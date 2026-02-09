@@ -16,6 +16,8 @@ public class App {
     private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
 
+
+    public static String globalDate = SystemDate.getFullDate();//これで現在を参照してね。
     public static int globalPointMin = 4;
 
 
@@ -24,6 +26,8 @@ public class App {
         loadStudent();//ロード追加
         loadTeacher();//ロード追加
 
+        System.out.println(SystemDate.getFullDate());
+        System.out.println(SystemDate.setPointDelDate());
         Login l = new Login();
         l.loginScreen();
 
