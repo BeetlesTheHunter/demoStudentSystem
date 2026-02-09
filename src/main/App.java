@@ -26,7 +26,8 @@ public class App {
         loadStudent();//ロード追加
         loadTeacher();//ロード追加
 
-        new SystemDate().setDate();
+        System.out.println(SystemDate.getFullDate());
+        System.out.println(SystemDate.setPointDelDate());
         Login l = new Login();
         l.loginScreen();
 

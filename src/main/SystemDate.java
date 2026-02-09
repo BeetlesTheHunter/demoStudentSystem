@@ -4,10 +4,29 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.Scanner;
 
+/*
+    関数マニュアル
+
+    SystemDate.getFullDate()
+        Stringで今日の日付を返す
+
+    SystemDate.getFullDateAsInt()
+        intで今日の日付を返す
+
+    SystemDate.setDate()
+        String を返す
+        呼ぶ時にScannerがユーザの入力を読む必ずyyyymmddで入力するように。
+    
+    SystemDate.setPointDelDate()
+        intで来年の日付を返す
+        ポイントを消す日付です
+
+*/
+
 public class SystemDate {
     
     private static Integer year = LocalDate.now().getYear();
-    private static Integer month = LocalDate.now().getDayOfMonth();
+    private static Integer month = LocalDate.now().getMonthValue();
     private static Integer day = LocalDate.now().getDayOfMonth();
 
     private static Scanner sc = new Scanner(System.in);
@@ -18,8 +37,6 @@ public class SystemDate {
             System.out.println("yyyymmdd方式で入力してください。");
             System.out.println("例:2025年1月1日は 20250101で入力します。");
             date = sc.nextLine();
-
-            
 
             int year = Integer.parseInt(Character.toString(date.charAt(0)) + Character.toString(date.charAt(1)) + Character.toString(date.charAt(2))  + Character.toString(date.charAt(3)));
             int month = Integer.parseInt(Character.toString(date.charAt(4)) + Character.toString(date.charAt(5)));
@@ -70,8 +87,17 @@ public class SystemDate {
         return date;
     }
 
+    public static int setPointDelDate(){
+        return Integer.parseInt(getFullDate()) + 10000;
+    }
+
     public static String getFullDate(){
-        return year.toString() + month.toString() +"0"+ day.toString();
+        return (datetoInt()).toString();
+    }
+
+
+    public static int getFullDateAsInt(){
+        return datetoInt();
     }
 
     public static String getYear(){
@@ -89,6 +115,10 @@ public class SystemDate {
     private static String getWeekDay(int year,int month,int day){
         var d = LocalDate.of(year,month,day);
         return d.getDayOfWeek().toString();
+    }
+
+    private static Integer datetoInt(){
+        return ((year*10000)+(month*100)+day);
     }
 
 
