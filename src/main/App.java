@@ -96,7 +96,6 @@ public class App {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        makeTeacherMap();
     }
 
     public static void loadReservation(){
