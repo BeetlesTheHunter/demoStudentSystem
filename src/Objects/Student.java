@@ -11,13 +11,13 @@ public class Student implements ClassCourse{
     private boolean toeic;
     private String teacherId;
     private int point;
-    private String pointDelDate;
+    private int pointDelDate;
     private Course course;
 
     public Student() {
     }
 
-    public Student(String studentId, String name, String pw, boolean toeic, String teacherId, int point, String pointDelDate, String course){
+    public Student(String studentId, String name, String pw, boolean toeic, String teacherId, int point, int pointDelDate, String course){
         this.studentId = studentId;
         this.name = name;
         this.pw = pw;
@@ -63,7 +63,7 @@ public class Student implements ClassCourse{
         return point;
     }
 
-    public String getPointDelDate() {
+    public int getPointDelDate() {
         return pointDelDate;
     }
 
@@ -92,7 +92,7 @@ public class Student implements ClassCourse{
         this.point = point;
     }
 
-    public void setPointDelDate(String pointDelDate) {
+    public void setPointDelDate(int pointDelDate) {
         this.pointDelDate = pointDelDate;
     }
 
