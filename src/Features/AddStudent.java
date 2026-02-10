@@ -81,7 +81,7 @@ public class AddStudent {
         // now.getDayOfMonth()); //ポイント期限
         int pointDelDate = new SystemDate().setPointDelDate();
 
-        String pw = createStudentPw(); //パスワードランダム生成
+        String pw = new Password().setPassword(); //パスワードランダム生成
        
         Student s = new Student();
         s.setStudentId(StudentId);

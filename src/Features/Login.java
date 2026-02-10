@@ -39,9 +39,10 @@ public class Login {
 
     private boolean checkUser(String _ID, String _pass){
         Student user = App.findStudent(_ID);
+        String input = ((Integer)(_pass.hashCode())).toString();
         if(user == null)return false;
         if(!user.getStudentId().equals(_ID))return false;
-        if(!user.getPw().equals(_pass))return false;
+        if(!user.getPw().equals(input))return false;
         
         return true;
     }
