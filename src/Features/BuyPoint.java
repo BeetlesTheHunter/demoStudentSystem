@@ -5,12 +5,13 @@ import main.SystemDate;
 
 public class BuyPoint {
     static Scanner sc = new Scanner(System.in);
-    public void buyPointScreen(String id){
+    public void buyPointScreen(String id){//ポイント購入画面
         int point = 0;
 
         while (true) { //ポイント購入チェック
             System.out.println("購入するポイントを入力してください (購入条件は最低限200ポイントおよび200ポイントごとしか買えない)");
             point = sc.nextInt();
+            sc.nextLine();
             if(!checkBuyPoint(point)){
                 System.out.println("購入条件に合わないです、もう一度入力してください");
                 continue;
@@ -32,11 +33,11 @@ public class BuyPoint {
                 System.out.println("カード番号が不正です。");
                 continue;
             }else{
-                System.out.println("カード番号確認完了");
                 break;
             }
 }
         System.out.println("カード名義：");
+        sc.next();
         System.out.println("有効期限：");
         sc.next();
         System.out.println("セキュリティコード：");
@@ -64,6 +65,12 @@ public class BuyPoint {
             }
             
             App.saveStudent();
+            System.out.println("決済中...");
+            try {   
+            Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            e.printStackTrace();
+            }
             System.out.println("ポイント購入完了しました。");
         }else{
             System.out.println("ポイント購入をキャンセルしました。");
@@ -71,18 +78,18 @@ public class BuyPoint {
     }
 }
     
-    private boolean checkCnumber(String cNumber) {
+    private boolean checkCnumber(String cNumber) {//カード番号チェック
         if(cNumber.length() != 16){return false;}
         return true;
     }
 
-    public boolean checkBuyPoint(int point) {
+    public boolean checkBuyPoint(int point) {//ポイント購入条件チェック
         if(point<200){return false;}
         if(point%200!=0){return false;}
         return true;
     }
 
-    private boolean checkCsecurityCode(int csc) {
+    private boolean checkCsecurityCode(int csc) {//セキュリティコードチェック
         if(csc < 100 || csc > 999){return false;}
         return true;
     }

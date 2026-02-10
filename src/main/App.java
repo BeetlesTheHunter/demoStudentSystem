@@ -14,8 +14,8 @@ import Objects.Teacher;
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
     private static HashMap<String,Student> studentMap = new HashMap<String,Student>();
-    private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
-    private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
+    public static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
+    public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
 
 
     public static String globalDate = SystemDate.getFullDate();//これで現在を参照してね。
