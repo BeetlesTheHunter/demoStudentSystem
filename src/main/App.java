@@ -60,7 +60,7 @@ public class App {
                 s.setToeic(isToeic);
                 s.setTeacherId(data[4].trim());
                 s.setPoint(Integer.parseInt(data[5].trim()));
-                s.setPointDelDate(data[6].trim());
+                s.setPointDelDate(Integer.parseInt(data[6].trim()));
                 s.setCourse(data[7].trim());
                 studentList.add(s);
             }          

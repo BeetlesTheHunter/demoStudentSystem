@@ -1,8 +1,7 @@
 package Features;
-import main.App;
-
-import java.time.LocalDateTime;
 import java.util.Scanner;
+import main.App;
+import main.SystemDate;
 
 public class BuyPoint {
     static Scanner sc = new Scanner(System.in);
@@ -42,14 +41,24 @@ public class BuyPoint {
         System.out.println("有効期限：");
         sc.next();
         System.out.println("セキュリティコード：");
-        sc.next();
+        int csc =sc.nextInt();
+        while (true) { //セキュリティコードチェック
+            if(!checkCsecurityCode(csc)){
+                System.out.println("セキュリティコードが不正です。");
+                continue;
+            }else{
+                System.out.println("セキュリティコード確認完了");
+                break;
+            }
+        }
         System.out.println("購入を確定しますか？ y/n");
         String choose = sc.next();
-        LocalDateTime now = LocalDateTime.now();
-        String pointDelDate = String.format("%04d-%02d-%02d",
-        now.getYear()+1,
-        now.getMonthValue(),
-        now.getDayOfMonth()); 
+        // LocalDateTime now = LocalDateTime.now();
+        // String pointDelDate = String.format("%04d-%02d-%02d",
+        // now.getYear()+1,
+        // now.getMonthValue(),
+        // now.getDayOfMonth()); 
+        int pointDelDate = new SystemDate().setPointDelDate();
         if(choose.equalsIgnoreCase("y")){
             for (int i = 0; i < App.studentList.size(); i++) {
                 if(id.equals(App.studentList.get(i).getStudentId())){
@@ -67,7 +76,6 @@ public class BuyPoint {
     }
 }
     
-
     private boolean checkCnumber(String cNumber) {
         if(cNumber.length() != 16){return false;}
         return true;
@@ -76,6 +84,11 @@ public class BuyPoint {
     public boolean checkBuyPoint(int point) {
         if(point<200){return false;}
         if(point%200!=0){return false;}
+        return true;
+    }
+
+    private boolean checkCsecurityCode(int csc) {
+        if(csc < 100 || csc > 999){return false;}
         return true;
     }
 
