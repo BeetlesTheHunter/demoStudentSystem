@@ -79,7 +79,7 @@ public class AddStudent {
         now.getMonthValue(),
         now.getDayOfMonth()); //ポイント期限
 
-        String pw = createStudentPw(); //パスワードランダム生成
+        String pw = new Password().setPassword(); //パスワードランダム生成
        
         Student s = new Student();
         s.setStudentId(StudentId);

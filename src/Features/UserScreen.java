@@ -27,7 +27,7 @@ public class UserScreen {
             System.out.println("3.ポイント購入");
             System.out.println("4.パスワード変更");
             System.out.println("5.ログアウト");
-            System.out.println("6.システム終了");
+            //System.out.println("6.システム終了"); 生徒にシステム終了させない。
 
 
             String choice = sc.nextLine();
@@ -37,9 +37,8 @@ public class UserScreen {
                 case "1" -> System.out.println();
                 case "2" -> System.out.println();
                 case "3" -> new BuyPoint().buyPointScreen(USER.getStudentId());
-                case "4" -> new Password().changePw(USER.getStudentId());
+                case "4" -> USER.setPw(new Password().setPassword());
                 case "5" -> {return;}
-                case "6" -> System.exit(0);
                 default -> System.out.println("Not an option try again");
             }
         }
