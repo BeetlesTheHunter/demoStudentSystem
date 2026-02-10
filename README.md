@@ -1,18 +1,22 @@
-## Getting Started
+#　池田英会話スクール生徒管理システム
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+池田英会話スクールの生徒情報を管理するためのシステム
+システムの機能は２つのモードの別れています。
+    ー管理者
+    ー生徒
 
-## Folder Structure
+## 機能
 
-The workspace contains two folders by default, where:
+### ログイン
+    システム起動時にIDとパスワードを問われますシステムはIDとパスワードを確認し、正しいものであればログインを許します。
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+###　生徒機能
+    生徒がログインした時に使用できる機能
+####  レッスンの予約
+####　レッスンの予約状況の確認
+####　ポイントの購入
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+###　管理者画面
+    先生や受付がログインする時の画面
+    
+####
