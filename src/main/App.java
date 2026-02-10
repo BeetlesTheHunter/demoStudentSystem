@@ -13,9 +13,12 @@ import Objects.Teacher;
 
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
-    private static HashMap<String,Student> studentMap = new HashMap<String,Student>();
     private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     private static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
+
+    private static HashMap<String,Student> studentMap = new HashMap<String,Student>();
+    private static HashMap<String,Teacher> teacherMap = new HashMap<String,Teacher>();
+
 
 
     public static String globalDate = SystemDate.getFullDate();//これで現在を参照してね。
@@ -34,10 +37,19 @@ public class App {
     public static Student findStudent(String _ID){
         return studentMap.get(_ID); //Student のリストからIDで探します。
     }
+    public static Teacher findTeacher(String _ID){
+        return teacherMap.get(_ID);
+    }
 
     private static void makeStudentMap(){
         for (int i = 0; i < studentList.size(); i++){
             studentMap.put(studentList.get(i).getStudentId(), studentList.get(i));
+        }
+    }
+
+    private static void makeTeacherMap(){
+        for (int i = 0; i < teacherList.size(); i++){
+            teacherMap.put(teacherList.get(i).getTeacherId(),teacherList.get(i));
         }
     }
     
