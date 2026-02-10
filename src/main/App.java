@@ -111,6 +111,7 @@ public class App {
                 r.setTeacherId(data[1].trim());
                 r.setDate(data[2].trim());
                 r.setTime(data[3].trim());
+                r.setType(data[4].trim());
             }           
         }catch(IOException e) {
             System.err.println(e.getMessage());
@@ -142,7 +143,8 @@ public class App {
             fw.write(r.getStudentId() + "," +
                      r.getTeacherId() + "," +
                      r.getDate() + "," +
-                     r.getTime() + "," + "\n");                   
+                     r.getTime() + "," + 
+                     r.getType() + "," +"\n");                   
         }fw.close();
     } catch (Exception e) {
         e.printStackTrace();
