@@ -4,7 +4,7 @@ import main.App;
 public class Password {
     static java.util.Scanner sc = new java.util.Scanner(System.in);
 
-    public String setPassword(){
+    public String setPassword(){//パスワード設定画面
 
         String password;
         while (true) {
@@ -28,18 +28,18 @@ public class Password {
         return ((Integer)password.hashCode()).toString();
     }
 
-    public void changePw(String Id){
+    public static void changePw(String Id){//パスワード変更画面
         String pw;
         while (true) { 
                 System.out.println("変えたいパスワードを入力してください");
                 System.out.println("パスワードは6文字以上12文字以下、英数字のみ使用可能");
-                pw = sc.next();
+                pw = sc.nextLine();
                 if(!checkPw(pw)){
                     System.out.println("パスワードが条件に合わないです、もう一度入力してください");
                     continue;
                 }else {
                     System.out.println("入力したパスワードをもう一度確認してください");
-                    String againPw = sc.next();
+                    String againPw = sc.nextLine();
                     if(!againPw.equals(pw))continue;
                     else{
                         System.out.println("パスワード変更成功");
@@ -55,7 +55,7 @@ public class Password {
         App.saveStudent();
     }
 
-    private boolean checkPw(String pw) {
+    public static boolean checkPw(String pw) {//パスワードの条件チェック
         if(pw.length()<6 || pw.length()>12){return false;}
         for (int i = 0; i < pw.length(); i++) {
             char c = pw.charAt(i);

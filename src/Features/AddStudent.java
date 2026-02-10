@@ -2,21 +2,18 @@ package Features;
 
 import Objects.Student;
 import java.time.LocalDateTime;
-// import java.util.ArrayList;
-// import java.util.Random;
 import java.util.Scanner;
 import main.App;
 import main.SystemDate;
 
 public class AddStudent {
     static Scanner sc = new Scanner(System.in);
-    public void addStudentScreen(){
-        System.out.println("--------入会システム--------");
+    public void addStudentScreen(){//生徒入会画面
+        System.out.println("================生徒入会システム================");
         while (true) {
             System.out.println("[1]: 生徒入会");
             System.out.println("[2]: システム終了");
-            System.out.println("[3]: ログアウト");
-            System.out.println("[4]: 前のページ");
+            System.out.println("[3]: 前のページ");
             String choose = sc.next();
             switch (choose) {
                 case "1" :
@@ -27,10 +24,6 @@ public class AddStudent {
                     System.out.println("システム終了します");
                     System.exit(0);
                 case "3" :
-                    System.out.println("ログアウトします、ログイン画面に戻ります");
-                    System.out.println("--------------------------------------------------------");
-                    return;
-                case "4" :
                     return;
                 default :
                  System.out.println("もう一度入力してください");
@@ -38,10 +31,9 @@ public class AddStudent {
             }
         }
 
-
     }
 
-    private void addStudent(){
+    private void addStudent(){//生徒入会処理
         String StudentId = createStudentId();
         System.out.println("生徒名を入力してください");
         String studentName = sc.next(); //生徒名入力
@@ -89,14 +81,14 @@ public class AddStudent {
         s.setCourse(course);
         App.studentList.add(s);
         App.saveStudent();
-        System.out.println("学生:" + StudentId + ", " + studentName + "さんが入会完了です、初期パスワードは:" + pw + ", パスワードは大事に保管してください");
+        System.out.println("学生:" + StudentId + ", " + studentName + "さんが入会完了です、パスワードは大事に保管してください");
 
 
 
 
 }
 
-    private String createStudentId() {
+    private String createStudentId() {//生徒ID作成 作成ルールは "s"+年+リストのindex
         String ID = "";
         LocalDateTime now = LocalDateTime.now();
         ID = ("s"+now.getYear()+ (0000 + App.studentList.size()));
@@ -107,8 +99,7 @@ public class AddStudent {
         return ID;
     }
 
-
-    // private String createStudentPw() {
+    // private String createStudentPw() {//仮パスワード作成ランダム6文字,もういらんかも。
     //     String pw = "";
     //     ArrayList<Character> list = new ArrayList<>();
     //     for (int i = 0; i < 26; i++) {
