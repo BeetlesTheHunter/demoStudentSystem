@@ -3,6 +3,7 @@ public class Teacher {
     
     private String teacherId;
     private String name;
+    private String password;
 
     //getter
     public String getTeacherId() {
@@ -18,5 +19,9 @@ public class Teacher {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPw(){
+        return this.password;
     }
 }
