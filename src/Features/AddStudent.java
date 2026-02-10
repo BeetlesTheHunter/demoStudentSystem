@@ -2,8 +2,8 @@ package Features;
 
 import Objects.Student;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Random;
+// import java.util.ArrayList;
+// import java.util.Random;
 import java.util.Scanner;
 import main.App;
 import main.SystemDate;
@@ -74,14 +74,9 @@ public class AddStudent {
             }else break;
         }
 
-        // LocalDateTime now = LocalDateTime.now();
-        // String pointDelDate = String.format("%04d-%02d-%02d",
-        // now.getYear()+1,
-        // now.getMonthValue(),
-        // now.getDayOfMonth()); //ポイント期限
-        int pointDelDate = new SystemDate().setPointDelDate();
+        int pointDelDate =  SystemDate.setPointDelDate();
 
-        String pw = new Password().setPassword(); //パスワードランダム生成
+        String pw = new Password().setPassword(); //パスワードを入力
        
         Student s = new Student();
         s.setStudentId(StudentId);
@@ -113,22 +108,22 @@ public class AddStudent {
     }
 
 
-    private String createStudentPw() {
-        String pw = "";
-        ArrayList<Character> list = new ArrayList<>();
-        for (int i = 0; i < 26; i++) {
-            list.add((char)('a' + i));
-            list.add((char)('A' + i));
-        }
-        Random r = new Random();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 6; i++) {
-            int index = r.nextInt(list.size());
-            char c = list.get(index);
-            sb.append(c);
-        }
-        pw = sb.toString();
-        return pw;
-    }
+    // private String createStudentPw() {
+    //     String pw = "";
+    //     ArrayList<Character> list = new ArrayList<>();
+    //     for (int i = 0; i < 26; i++) {
+    //         list.add((char)('a' + i));
+    //         list.add((char)('A' + i));
+    //     }
+    //     Random r = new Random();
+    //     StringBuilder sb = new StringBuilder();
+    //     for (int i = 0; i < 6; i++) {
+    //         int index = r.nextInt(list.size());
+    //         char c = list.get(index);
+    //         sb.append(c);
+    //     }
+    //     pw = sb.toString();
+    //     return pw;
+    // }
 
 }
