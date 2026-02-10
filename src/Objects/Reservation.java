@@ -5,6 +5,7 @@ public class Reservation {
     private String teacherId;
     private String date;
     private String time;
+    private String type;
 
     public String getStudentId(){
         return this.studentId;
@@ -22,6 +23,10 @@ public class Reservation {
         return this.time;
     }
 
+    public String getType(){
+        return this.type;
+    }
+
     public void setStudentId(String sId){
         this.studentId=sId;
     }
@@ -36,6 +41,10 @@ public class Reservation {
 
     public void setTime(String time){
         this.time=time;
+    }
+
+    public void setType(String type){
+        this.type=type;
     }
 
 

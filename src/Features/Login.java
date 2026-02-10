@@ -1,5 +1,6 @@
 package Features;
 import Objects.Student;
+import Objects.Teacher;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import main.App;
@@ -23,10 +24,10 @@ public class Login {
             System.err.println(e.getMessage());
         }
 
-        if(checkUser(userID,userPass)){
-            System.out.println("ログインしました");
-            System.out.println("");
+        if(checkStudent(userID,userPass)){
             new UserScreen().studentScreen(userID);
+        }else if(!checkTeacher(userID,userPass)){
+
         }else if(checkAdmin(userID,userPass)){
             System.out.println("ログインしました");
             System.out.println("");
@@ -45,11 +46,21 @@ public class Login {
         return true;
     }
 
-    private boolean checkUser(String _ID, String _pass){//生徒チェック
+    private boolean checkStudent(String _ID, String _pass){
         Student user = App.findStudent(_ID);
         String input = ((Integer)(_pass.hashCode())).toString();
         if(user == null)return false;
         if(!user.getStudentId().equals(_ID))return false;
+        if(!user.getPw().equals(input))return false;
+        
+        return true;
+    }
+
+    private boolean checkTeacher(String _ID, String _pass){
+        Teacher user = App.findTeacher(_ID);
+        String input = ((Integer)(_pass.hashCode())).toString();
+        if(user == null)return false;
+        if(!user.getTeacherId().equals(_ID))return false;
         if(!user.getPw().equals(input))return false;
         
         return true;
