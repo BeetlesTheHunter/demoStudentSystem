@@ -37,7 +37,6 @@ public class BuyPoint {
             }
 }
         System.out.println("カード名義：");
-        String cName = sc.next();
         System.out.println("有効期限：");
         sc.next();
         System.out.println("セキュリティコード：");
@@ -53,12 +52,8 @@ public class BuyPoint {
         }
         System.out.println("購入を確定しますか？ y/n");
         String choose = sc.next();
-        // LocalDateTime now = LocalDateTime.now();
-        // String pointDelDate = String.format("%04d-%02d-%02d",
-        // now.getYear()+1,
-        // now.getMonthValue(),
-        // now.getDayOfMonth()); 
-        int pointDelDate = new SystemDate().setPointDelDate();
+   
+        int pointDelDate = SystemDate.setPointDelDate();
         if(choose.equalsIgnoreCase("y")){
             for (int i = 0; i < App.studentList.size(); i++) {
                 if(id.equals(App.studentList.get(i).getStudentId())){
