@@ -23,7 +23,7 @@ public class Login {
 
         if(checkStudent(userID,userPass)){
             new UserScreen().studentScreen(userID);
-        }else if(){
+        }else if(!checkTeacher(userID,userPass)){
 
         }else if(checkAdmin(userID,userPass)){
             new UserScreen().adminScreen();
