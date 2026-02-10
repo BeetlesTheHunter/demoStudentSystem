@@ -2,7 +2,7 @@ package Features;
 
 import Objects.Reservation;
 import Objects.Student;
-import Objects.Teacher;
+//import Objects.Teacher;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -70,13 +70,18 @@ public class Booking {
     }//booking()
 
     public void SoroBooking(String id){
-        Student s;
+        Student s=null;
         for(int i=0;i<App.studentList.size();i++){
             if(((App.studentList.get(i)).getStudentId()).equals(id)){
                 s=App.studentList.get(i);
             }
         }
-        String tid=s.getStudentId();
+        if(s.getPoint()<9){
+            System.out.println("ポイント不足です。");
+            return;
+        }
+
+        String tid=s.getTeacherId();
         String date;
         System.out.println("1対1での授業を予約します。");
 
@@ -143,7 +148,8 @@ public class Booking {
                 }
                 String time=timetable.get(idx);
                 checkOK(id,tid,date,time);
-
+                s.setPoint(s.getPoint()-9);
+                App.saveStudent();
             }else{
                 System.out.println("正しい形式で入力してください（例：2000-01-23）");
                 continue;
@@ -171,6 +177,7 @@ public class Booking {
         r.setDate(date);
         //reservationListをcsvに書き込む
         App.saveReservation();
+        
     }
 
 
