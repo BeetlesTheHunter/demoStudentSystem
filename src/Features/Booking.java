@@ -12,9 +12,6 @@ public class Booking {
     static Scanner sc = new Scanner(System.in);
     
 
-
-
-
     public void viewReservation(String id){//予約確認(二つに分けたけど分けんでもよかったわ)
         String first = id.substring(0, 1);
         if(first.equals("s")){
@@ -51,6 +48,7 @@ public class Booking {
         }
     }//viewReservation()
 
+    //予約時はこの関数を呼び出して（グループ授業は未完成です。）
     public void booking(String id){//生徒のidを渡す。
         System.out.printf("1対1での授業を希望しますか（y/n）:");
         String input="";
