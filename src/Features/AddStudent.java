@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import main.App;
+import main.SystemDate;
 
 public class AddStudent {
     static Scanner sc = new Scanner(System.in);
@@ -73,11 +74,12 @@ public class AddStudent {
             }else break;
         }
 
-        LocalDateTime now = LocalDateTime.now();
-        String pointDelDate = String.format("%04d-%02d-%02d",
-        now.getYear()+1,
-        now.getMonthValue(),
-        now.getDayOfMonth()); //ポイント期限
+        // LocalDateTime now = LocalDateTime.now();
+        // String pointDelDate = String.format("%04d-%02d-%02d",
+        // now.getYear()+1,
+        // now.getMonthValue(),
+        // now.getDayOfMonth()); //ポイント期限
+        int pointDelDate = new SystemDate().setPointDelDate();
 
         String pw = new Password().setPassword(); //パスワードランダム生成
        
@@ -92,7 +94,7 @@ public class AddStudent {
         s.setCourse(course);
         App.studentList.add(s);
         App.saveStudent();
-        System.out.println("学生:" + StudentId + ", " + studentName + "さんが入会完了です、初期パスワードは:" + pw + ", パスワードは大事に保管してください" + course);
+        System.out.println("学生:" + StudentId + ", " + studentName + "さんが入会完了です、初期パスワードは:" + pw + ", パスワードは大事に保管してください");
 
 
 
