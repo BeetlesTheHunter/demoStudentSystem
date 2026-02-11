@@ -63,7 +63,7 @@ public class UserScreen {
            
             System.out.println("");
             System.out.println("[1].学生入会");
-            System.out.println("[2].生徒一覧"); //テスト、デバッグ用
+            System.out.println("[2].一覧"); //テスト、デバッグ用
             System.out.println("[3].生徒管理");
             System.out.println("[4].ログアウト");
             System.out.println("[5].システム終了");
@@ -74,7 +74,10 @@ public class UserScreen {
 
             switch (choice){
                 case "1" -> new AddStudent().addStudentScreen();
-                case "2" -> viewStudent();
+                case "2" -> {viewStudent();
+                    viewReservation();
+                    viewTeacher();
+                }
                 case "3" -> new ManageStudent().manageStudentScreen();
                              
                 case "4" -> {
@@ -91,9 +94,20 @@ public class UserScreen {
     }
 
     public void viewStudent(){//デバッグ用生徒一覧表示
-        System.out.println(App.studentList.size());
         for (int i = 0; i < App.studentList.size(); i++) {
             System.out.println(App.studentList.get(i).toString());
+        }
+    }
+
+    private void viewReservation() {
+        for (int i = 0; i < App.reservationList.size(); i++) {
+            System.out.println(App.reservationList.get(i).toString());
+        }
+    }
+
+    private void viewTeacher() {
+        for (int i = 0; i < App.teacherList.size(); i++) {
+            System.out.println(App.teacherList.get(i).toString());
         }
     }
     

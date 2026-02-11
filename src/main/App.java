@@ -13,7 +13,7 @@ import Objects.Teacher;
 
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
-    private static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
+    public static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
     public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();//reservationList作成
 
     private static HashMap<String,Student> studentMap = new HashMap<String,Student>();
@@ -112,6 +112,7 @@ public class App {
                 r.setDate(data[2].trim());
                 r.setTime(data[3].trim());
                 r.setType(data[4].trim());
+                reservationList.add(r);
             }           
         }catch(IOException e) {
             System.err.println(e.getMessage());
