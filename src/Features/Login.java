@@ -26,7 +26,7 @@ public class Login {
 
         if(checkStudent(userID,userPass)){
             new UserScreen().studentScreen(userID);
-        }else if(!checkTeacher(userID,userPass)){
+        }else if(checkTeacher(userID,userPass)){
 
         }else if(checkAdmin(userID,userPass)){
             System.out.println("ログインしました");

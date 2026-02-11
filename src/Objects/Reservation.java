@@ -47,5 +47,18 @@ public class Reservation {
         this.type=type;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Reservation{");
+        sb.append("studentId=").append(studentId);
+        sb.append(", teacherId=").append(teacherId);
+        sb.append(", date=").append(date);
+        sb.append(", time=").append(time);
+        sb.append(", type=").append(type);
+        sb.append('}');
+        return sb.toString();
+    }
+
 
 }
