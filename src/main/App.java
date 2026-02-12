@@ -30,7 +30,6 @@ public class App {
         loadReservation();//ロード追加
         loadStudent();//ロード追加
         loadTeacher();//ロード追加
-        new AddTeacher().addTeacher();
 
         Login l = new Login();
         l.loginScreen();
