@@ -13,6 +13,10 @@ public class Teacher {
         return this.name;
     }
 
+    public String getPw(){
+        return this.password;
+    }
+
     //setter
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
@@ -20,10 +24,11 @@ public class Teacher {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getPw(){
-        return this.password;
+    public void setPassword(String password){
+        this.password = password;
     }
+
+    
 
     @Override
     public String toString() {
