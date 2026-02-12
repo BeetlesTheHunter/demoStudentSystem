@@ -11,6 +11,8 @@ import Objects.Reservation;
 import Objects.Student;
 import Objects.Teacher;
 
+import Features.AddTeacher;
+
 public class App {
     public static ArrayList<Student> studentList = new ArrayList<Student>();
     public static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();//teacherList作成
@@ -28,6 +30,7 @@ public class App {
         loadReservation();//ロード追加
         loadStudent();//ロード追加
         loadTeacher();//ロード追加
+        new AddTeacher().addTeacher();
 
         Login l = new Login();
         l.loginScreen();
@@ -91,6 +94,7 @@ public class App {
                 Teacher t = new Teacher();
                 t.setTeacherId(data[0].trim());
                 t.setName(data[1].trim());
+                t.setPassword(data[2].trim());
                 teacherList.add(t);
             }           
         } catch (IOException e) {
@@ -154,10 +158,11 @@ public class App {
     }
     
     public static void saveTeacher(){
-        try(FileWriter fw = new FileWriter("student.csv")) {
+        try(FileWriter fw = new FileWriter("teacher.csv")) {
         for(Teacher t : teacherList){
             fw.write(t.getTeacherId() + "," +
-                     t.getName() + "," + "\n");                   
+                     t.getName() + "," + 
+                     t.getPw()+","+"\n");                   
         }fw.close();
     } catch (Exception e) {
         e.printStackTrace();
