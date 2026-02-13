@@ -25,7 +25,7 @@ public class ManageStudent {
                     
                 case "2" -> changeCourse(s);
 
-                case "3" -> Password.changePw(s.getStudentId());
+                case "3" -> s.setPw(new Password().setPassword());
 
                 case "4" -> pointScreen(s);
 
