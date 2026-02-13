@@ -118,7 +118,6 @@ public class Student implements ClassCourse{
         sb.append("Student{");
         sb.append("学生ID=").append(studentId);
         sb.append(", 学生名前=").append(name);
-        sb.append(", パスワード=").append(pw);
         sb.append(", toeic=").append(toeic);
         sb.append(", 教師=").append(teacherId);
         sb.append(", ポイント残り=").append(point);

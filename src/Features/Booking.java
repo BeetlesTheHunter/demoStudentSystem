@@ -141,7 +141,7 @@ public class Booking {
                     if(idx>=timetable.size()){
                         System.out.println("無効な入力です。");
                         continue;
-                    }
+                    }break;
                 }
                 if(idx==99){
                     continue;
@@ -150,6 +150,7 @@ public class Booking {
                 checkOK(id,tid,date,time,"private");
                 s.setPoint(s.getPoint()-9);
                 App.saveStudent();
+                return;
             }else{
                 System.out.println("正しい形式で入力してください（例：2000-01-23）");
                 continue;
@@ -218,7 +219,10 @@ public class Booking {
                 //予約できないコマを削除
                 for(int i=0;i<App.reservationList.size();i++){
                     Reservation r=App.reservationList.get(i);
-                    //if(!(r.getStudentId()).equals(id))continue;
+                    if((r.getStudentId()).equals(id)){
+                        timetable.remove(r.getTime());
+                        continue;
+                    }
                     if((r.getTeacherId()).equals(tid)&&(r.getDate()).equals(date)){
                         if((r.getType()).equals("private")){
                             timetable.remove(r.getTime());
@@ -304,14 +308,16 @@ public class Booking {
                         System.out.println("無効な入力です。");
                         continue;
                     }
+                    break;
                 }
                 if(idx==99){
                     continue;
                 }
                 String time=timetable.get(idx);
-                checkOK(id,tid,date,time,"groupe");
+                checkOK(id,tid,date,time,"group");
                 s.setPoint(s.getPoint()-4);
                 App.saveStudent();
+                return;
             }else{
                 System.out.println("正しい形式で入力してください（例：2000-01-23）");
                 continue;
@@ -330,7 +336,7 @@ public class Booking {
         
         //reservationListにインスタンスを追加
         (App.reservationList).add(new Reservation());
-        int idx=(App.reservationList).size();
+        int idx=(App.reservationList).size()-1;
         Reservation r=App.reservationList.get(idx);
         r.setStudentId(studentID);
         r.setTeacherId(teacherID);
