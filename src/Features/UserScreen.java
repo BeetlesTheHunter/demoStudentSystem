@@ -37,7 +37,7 @@ public class UserScreen {
 
             switch (choice){
                 case "1" -> new Booking().viewReservation(USER.getStudentId());
-                case "2" -> System.out.println();
+                case "2" -> new Booking().booking(USER.getStudentId());
                 case "3" -> new BuyPoint().buyPointScreen(USER.getStudentId());
                 case "4" -> USER.setPw(new Password().setPassword());
                 case "5" -> {
@@ -63,10 +63,11 @@ public class UserScreen {
            
             System.out.println("");
             System.out.println("[1].学生入会");
-            System.out.println("[2].一覧"); //テスト、デバッグ用
-            System.out.println("[3].生徒管理");
-            System.out.println("[4].ログアウト");
-            System.out.println("[5].システム終了");
+            System.out.println("[2].教師追加");
+            System.out.println("[3].一覧"); //テスト、デバッグ用
+            System.out.println("[4].生徒管理");
+            System.out.println("[5].ログアウト");
+            System.out.println("[6].システム終了");
 
 
             String choice = sc.nextLine();
@@ -74,17 +75,18 @@ public class UserScreen {
 
             switch (choice){
                 case "1" -> new AddStudent().addStudentScreen();
-                case "2" -> {viewStudent();
+                case "2" -> new AddTeacher().addTeacher();
+                case "3" -> {viewStudent();
                     viewReservation();
                     viewTeacher();
                 }
-                case "3" -> new ManageStudent().manageStudentScreen();
+                case "4" -> new ManageStudent().manageStudentScreen();
                              
-                case "4" -> {
+                case "5" -> {
                     System.out.println("ログアウトしました");
                     return;
                             }
-                case "5" -> {
+                case "6" -> {
                     System.out.println("システム終了します");
                     System.exit(0);
                             }
