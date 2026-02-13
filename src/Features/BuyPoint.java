@@ -41,11 +41,11 @@ public class BuyPoint {
         System.out.println("有効期限：");
         sc.next();
         System.out.println("セキュリティコード：");
-        int csc =sc.nextInt();
+        
         while (true) { //セキュリティコードチェック
+            int csc =sc.nextInt();
             if(!checkCsecurityCode(csc)){
-                System.out.println("セキュリティコードが不正です。");
-                continue;
+                System.out.println("セキュリティコードが不正です。");  
             }else{
                 System.out.println("セキュリティコード確認完了");
                 break;
